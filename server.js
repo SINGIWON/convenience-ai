@@ -7,6 +7,7 @@ const app = express();
 app.use(express.json({ limit: "10mb" }));
 
 const API_KEY = process.env.GEMINI_API_KEY;
+const PORT = process.env.PORT || 3000;
 
 app.post("/api/analyze", async (req, res) => {
     const image = req.body.image;
@@ -34,4 +35,6 @@ app.post("/api/analyze", async (req, res) => {
     });
 });
 
-app.listen(3000, () => console.log("http://localhost:3000"));
+app.listen(PORT, () => {
+    console.log("Server running on", PORT);
+});
